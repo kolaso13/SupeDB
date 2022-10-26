@@ -33,22 +33,16 @@ public class Inventario {
             throw new RuntimeException(e);
         }
     }
-
-    ;
-
-
     private static Inventario instance;
     private Inventario(){
         ListaProductos = new ArrayList<Producto>();
     }
-
     public static Inventario getInstance() {
         if (instance == null) {
             instance = new Inventario();
         }
         return instance;
     }
-
     public static void guardarProductos(){
         try (PreparedStatement statement = connection.prepareStatement("""
            CREATE TABLE IF NOT EXISTS PRODUCTOS (
@@ -120,7 +114,6 @@ public class Inventario {
             e.printStackTrace();
         }
     }
-
     public static void addNuevoProducto(Producto tipo){
         System.out.println(tipo.volcar());
         try  {
@@ -175,7 +168,6 @@ public class Inventario {
             e.printStackTrace();
         }
     }
-
     public static void mostrarProductos(){
         try (PreparedStatement statement = connection.prepareStatement("""
                 SELECT * FROM PRODUCTOS;
@@ -190,13 +182,12 @@ public class Inventario {
                 String FechaDeCad = rs.getString(6);
                 String Especificacion = rs.getString(7);
                 String Tipo = rs.getString(8);
-                System.out.println("ID = " + ID+" Nombre: "+Nombre+" Precio: "+Precio+" Cantidad: "+Cantidad+" Peso: "+Peso+" FechaDeCad: "+FechaDeCad+" Especificacion: "+Especificacion+" Tipo: "+Tipo );
+                System.out.println("ID = " +ID+" Nombre: "+Nombre+" Precio: "+Precio+" Cantidad: "+Cantidad+" Peso: "+Peso+" FechaDeCad: "+FechaDeCad+" Especificacion: "+Especificacion+" Tipo: "+Tipo);
             }
         }catch (Exception e){
             System.out.println(e);
         }
     }
-
     public static void actualizarCantidad(int codigo, int cant){
 
         try (PreparedStatement statement = connection.prepareStatement("""
@@ -209,11 +200,9 @@ public class Inventario {
             System.out.println(e);
         }
     }
-
     public static int tamaño(){
         getInstance(); return ListaProductos.size();
     }
-
     public static void mostrarProductosEnviables(){
         try (PreparedStatement statement = connection.prepareStatement("""
                 SELECT * FROM PRODUCTOS WHERE TIPO='Herramienta' OR TIPO='Otros';
@@ -236,7 +225,7 @@ public class Inventario {
         }
     }
 
-    public static void eliminarProductos(int id){
+    public static void eliminarProductos(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Nombre del producto:");
         String producto = sc.nextLine();

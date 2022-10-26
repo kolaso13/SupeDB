@@ -48,8 +48,9 @@ public class main {
                         }else{
                             break;
                         }
-
-                    } opcion=1; break;
+                    }
+                    opcion=1;
+                    break;
                 case 3: 	//aÃ±adir un nuevo producto al almancÃ©n
                     while (opcion!=0) {
                         mostrarMenuAddNuevoProducto();
@@ -63,11 +64,20 @@ public class main {
                             System.out.println();
                             pause();
                         }
-                    } opcion=1; break;
+                    }
+                    opcion=1;
+                    break;
                 case 4: Inventario.mostrarProductosEnviables();
                     pause();
                     break;
-                case 5: Inventario.guardarProductos();
+                case 5:
+                    System.out.println("El inventario ya se ha guardado correctamente en la base de datos");
+//                    Inventario.guardarProductos();
+                    pause();
+                    break;
+                case 6:
+                    Inventario.mostrarProductos();
+                    Inventario.eliminarProductos();
                     pause();
                     break;
             }
@@ -83,6 +93,7 @@ public class main {
         System.out.println("            tecla:3   - Añadir nuevo producto");
         System.out.println("            tecla:4   - Mostrar productos enviables");
         System.out.println("            tecla:5   - Guardar inventario");
+        System.out.println("            tecla:6   - Eliminar producto");
         System.out.println("            tecla:0   - Terminar");
         System.out.println("====================================================================");
     }
